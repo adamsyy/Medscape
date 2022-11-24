@@ -2,6 +2,8 @@ import 'dart:ui';
 
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
+import 'package:healthcard/Home.dart';
+import 'package:healthcard/patient/Reminder.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 class Profile extends StatefulWidget {
@@ -291,13 +293,28 @@ class _ProfileState extends State<Profile> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Icon(
-                          Icons.notification_add_outlined,
-                          color: Colors.white,
-                          size: 38,
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Reminder()));
+                          },
+                          child: Icon(
+                            Icons.notification_add_outlined,
+                            color: Colors.white,
+                            size: 38,
+                          ),
                         ),
-                        Icon(Icons.list_alt_rounded,
-                            color: Colors.white, size: 38),
+                        GestureDetector( onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Home()));
+                        },
+                          child: Icon(Icons.list_alt_rounded,
+                              color: Colors.white, size: 38),
+                        ),
                         Icon(Icons.person_outline_rounded,
                             color: Colors.white, size: 38),
                       ],

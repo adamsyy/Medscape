@@ -1,7 +1,9 @@
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:glassmorphism/glassmorphism.dart';
+import 'package:healthcard/Home.dart';
 import 'package:healthcard/doctor/Scan.dart';
+import 'package:healthcard/patient/Profile.dart';
 import 'package:http/http.dart' as http;
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -497,10 +499,24 @@ class _ReminderState extends State<Reminder> {
                           color: Colors.white,
                           size: 38,
                         ),
-                        Icon(Icons.list_alt_rounded,
-                            color: Colors.white, size: 38),
-                        Icon(Icons.person_outline_rounded,
-                            color: Colors.white, size: 38),
+                        GestureDetector(onTap: (){
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) =>  Home()),
+                          );
+                        },
+                          child: Icon(Icons.list_alt_rounded,
+                              color: Colors.white, size: 38),
+                        ),
+                        GestureDetector(onTap: (){
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) =>  Profile()),
+                          );
+                        },
+                          child: Icon(Icons.person_outline_rounded,
+                              color: Colors.white, size: 38),
+                        ),
                       ],
                     ),
                     height: 54,

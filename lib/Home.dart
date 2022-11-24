@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:glassmorphism/glassmorphism.dart';
 import 'package:healthcard/Controller.dart';
+import 'package:healthcard/blogs/Blogs2.dart';
 import 'package:healthcard/delivery/Blood.dart';
 import 'package:healthcard/delivery/Medicine.dart';
+import 'package:healthcard/patient/Profile.dart';
+import 'package:healthcard/patient/Reminder.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:geolocator/geolocator.dart';
 
@@ -117,19 +120,28 @@ class _HomeState extends State<Home>
                                 SizedBox(
                                   height: 20,
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Container(
-                                      height: 26,
-                                      width: 98,
-                                      decoration: BoxDecoration(
-                                          //add radius
+                                GestureDetector(onTap: (){
 
-                                          borderRadius:
-                                              BorderRadius.circular(18),
-                                          color: Color.fromRGBO(
-                                              255, 255, 255, 0.5)),
-                                      child: Center(child: Text("Read more"))),
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) =>  Blogs2()),
+                                    );
+
+                                },
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Container(
+                                        height: 26,
+                                        width: 98,
+                                        decoration: BoxDecoration(
+                                            //add radius
+
+                                            borderRadius:
+                                                BorderRadius.circular(18),
+                                            color: Color.fromRGBO(
+                                                255, 255, 255, 0.5)),
+                                        child: Center(child: Text("Read more"))),
+                                  ),
                                 ),
                               ],
                             ),
@@ -374,15 +386,29 @@ class _HomeState extends State<Home>
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Icon(
-                          Icons.notification_add_outlined,
-                          color: Colors.white,
-                          size: 38,
+                        GestureDetector(onTap: (){
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) =>  Reminder()),
+                          );
+                        },
+                          child: Icon(
+                            Icons.notification_add_outlined,
+                            color: Colors.white,
+                            size: 38,
+                          ),
                         ),
                         Icon(Icons.list_alt_rounded,
                             color: Colors.white, size: 38),
-                        Icon(Icons.person_outline_rounded,
-                            color: Colors.white, size: 38),
+                        GestureDetector(onTap: (){
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => const Profile()),
+                          );
+    },
+                          child: Icon(Icons.person_outline_rounded,
+                              color: Colors.white, size: 38),
+                        ),
                       ],
                     ),
                     height: 54,

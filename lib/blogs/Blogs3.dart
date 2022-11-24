@@ -2,6 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:glassmorphism/glassmorphism.dart';
 
 class Blogs3 extends StatefulWidget {
+
+
+
+  String name;
+  String description;
+  Blogs3({required this.name,required this.description});
+
   @override
   State<Blogs3> createState() => _Blogs3State();
 }
@@ -86,7 +93,7 @@ class _Blogs3State extends State<Blogs3> {
                                 Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: Center(
-                                        child: Text("Dr Ramesh kaulkarni"))),
+                                        child: Text(widget.name))),
                               ],
                             ),
                             SizedBox(
@@ -102,7 +109,7 @@ class _Blogs3State extends State<Blogs3> {
                     Image.asset("pics/blog.png"),
                     Padding(
                       padding: const EdgeInsets.all(14.0),
-                      child: Align(alignment: Alignment.center, child: Text( "Most people would like to be a healthy weight, whatever that means for their body type. Unfortunately, not many people know how to achieve this safely. There are a lot of fad diets and quick-fix solutions out there that promise results, but don’t deliver. So, if you want to reach a healthy weight, try these tips and tricks instead. The first step is understanding what a healthy weight looks like for your body type and frame. Once you have a good idea of your goals, you can start following these tips to help you get there: use weight loss pills, eat a balanced diet, and exercise regularly.",textAlign: TextAlign.center,style: TextStyle(),)),
+                      child: Align(alignment: Alignment.center, child: Text( widget.description,textAlign: TextAlign.center,style: TextStyle(),)),
                     ),
                   ]),
             )),
