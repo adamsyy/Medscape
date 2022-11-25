@@ -68,7 +68,7 @@ class _ProfileState extends State<Profile> {
                 padding: const EdgeInsets.only(top: 20, left: 68),
                 child: Container(
                   child: QrImage(
-                    data: 'adamsy',
+                    data: controller.username.value,
                     version: QrVersions.auto,
                     size: 250,
                     gapless: false,

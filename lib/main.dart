@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
 
           primarySwatch: Colors.blue,
         ),
-          home:Home(),
+          home:Login(),
     );
   }
 }

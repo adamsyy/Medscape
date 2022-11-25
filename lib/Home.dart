@@ -440,7 +440,7 @@ class _HomeState extends State<Home> {
                                                   height: 10,
                                                 ),
                                                 Image.asset(
-                                                  "pics/blog.png",
+                                                  "pics/blog_small.png",
                                                   width: 36,
                                                   height: 33,
                                                 ),
@@ -486,7 +486,7 @@ class _HomeState extends State<Home> {
                                                   height: 10,
                                                 ),
                                                 Image.asset(
-                                                  "pics/home3.png",
+                                                  "pics/coverage.png",
                                                   width: 36,
                                                   height: 33,
                                                 ),
@@ -580,7 +580,7 @@ class _HomeState extends State<Home> {
                                                   height: 10,
                                                 ),
                                                 Image.asset(
-                                                  "pics/home3.png",
+                                                  "pics/dummy.png",
                                                   width: 36,
                                                   height: 33,
                                                 ),
@@ -643,7 +643,7 @@ class _HomeState extends State<Home> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        Profile(namefromprofile: "adamsy")),
+                                        Profile(namefromprofile: controller.username.value)),
                               );
                             },
                             child: Icon(Icons.person_outline_rounded,
@@ -660,7 +660,15 @@ class _HomeState extends State<Home> {
                     ),
                   )),
             ],
-          )),
+          ),
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.add),
+          onPressed: (){
+
+          },
+        ),
+      ),
+
     );
   }
 }
