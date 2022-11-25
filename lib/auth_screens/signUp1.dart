@@ -10,6 +10,13 @@ class signUp1 extends StatefulWidget {
 }
 
 class _signUp1State extends State<signUp1> {
+  TextEditingController unameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController fnameController = TextEditingController();
+  TextEditingController lnameController = TextEditingController();
+  TextEditingController passwdController = TextEditingController();
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -118,6 +125,7 @@ class _signUp1State extends State<signUp1> {
                         Padding(
                           padding: EdgeInsets.fromLTRB(20, 4, 19, 0),
                           child: TextField(
+                            controller: unameController,
                             decoration: InputDecoration(
                               enabledBorder:  OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(18),
@@ -152,6 +160,7 @@ class _signUp1State extends State<signUp1> {
                         Padding(
                           padding: EdgeInsets.fromLTRB(20, 4, 19, 0),
                           child: TextField(
+                            controller: emailController,
                             decoration: InputDecoration(
                               enabledBorder:  OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(18),
@@ -193,6 +202,7 @@ class _signUp1State extends State<signUp1> {
                                 subtitle: Padding(
                                   padding:  EdgeInsets.fromLTRB(10, 0, 0, 0),
                                   child: TextField(
+                                    controller: fnameController,
                                     decoration: InputDecoration(
                                       enabledBorder:  OutlineInputBorder(
                                           borderRadius: BorderRadius.circular(18),
@@ -231,6 +241,7 @@ class _signUp1State extends State<signUp1> {
                                   ),
                                 ),
                                 subtitle:  TextField(
+                                  controller: lnameController,
                                   decoration: InputDecoration(
                                     enabledBorder:  OutlineInputBorder(
                                         borderRadius: BorderRadius.circular(18),
@@ -271,6 +282,7 @@ class _signUp1State extends State<signUp1> {
                           subtitle: Padding(
                             padding:  EdgeInsets.fromLTRB(10, 0, 0, 0),
                             child: TextField(
+                              controller: passwdController,
                               decoration: InputDecoration(
                                 enabledBorder:  OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(18),
@@ -293,7 +305,9 @@ class _signUp1State extends State<signUp1> {
                         Align(
                           alignment: FractionalOffset.bottomRight,
                           child: MaterialButton(
-                            onPressed: () => {},
+                            onPressed: () => {
+                              
+                            },
                             child: Container(
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(12),

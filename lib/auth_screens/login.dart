@@ -1,5 +1,5 @@
 import 'dart:convert';
-
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
 import 'package:healthcard/Home.dart';
@@ -16,6 +16,8 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   TextEditingController unameController = TextEditingController();
   TextEditingController passwdController = TextEditingController();
+
+  bool flag=false;
 
   void login(String email , password) async {
     try{
@@ -48,6 +50,9 @@ class _LoginState extends State<Login> {
     }catch(e){
       print(e.toString());
     }
+    setState(() {
+      flag=false;
+    });
   }
 
   @override
@@ -140,13 +145,21 @@ class _LoginState extends State<Login> {
                                 children: [
                                   TextButton(
                                     style: TextButton.styleFrom(
+                                        fixedSize: Size(100, 45),
                                         backgroundColor: const Color(0xff01BC8F),
-
+                                        foregroundColor: const Color(0xff242424),
                                         padding: const EdgeInsets.fromLTRB(27, 10, 27 , 10),
                                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))
                                     ),
-                                    child: const Text("login", style: TextStyle(fontSize: 20,fontWeight: FontWeight.w400),),
+                                    child: (!flag ? const Text("login", style: TextStyle(fontSize: 20,fontWeight: FontWeight.w400, color: Color(0xff000000)),) : 
+                                    const SpinKitFadingCircle(
+                                      color: Colors.black,
+                                      size: 20,
+                                    )),
                                     onPressed: () {
+                                      setState(() {
+                                        flag = true;
+                                      });
                                       login(unameController.text.toString(), passwdController.text.toString());
                                     },
                                   ),
