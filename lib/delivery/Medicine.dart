@@ -3,7 +3,10 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:glassmorphism/glassmorphism.dart';
-import 'package:healthcard/blogs.dart';
+import 'package:healthcard/Home.dart';
+import 'package:healthcard/delivery/Post_medicine.dart';
+import 'package:healthcard/patient/Profile.dart';
+import 'package:healthcard/patient/Reminder.dart';
 import 'package:http/http.dart' as http;
 import 'package:url_launcher/url_launcher.dart';
 
@@ -27,7 +30,9 @@ class _MedicineState extends State<Medicine> {
   late var dataFuture;
 
   Widget build(BuildContext context) {
-    return Scaffold(
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
         backgroundColor: Color(0xff9AC9C2),
         body: Stack(
           children: [
@@ -53,8 +58,7 @@ class _MedicineState extends State<Medicine> {
                               Text(
                                 "MedScape",
                                 style: TextStyle(
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 18),
+                                    fontWeight: FontWeight.w500, fontSize: 18),
                               ),
                             ],
                           ),
@@ -111,8 +115,7 @@ class _MedicineState extends State<Medicine> {
                                               child: Text(
                                                 data[index]["name"],
                                                 style: TextStyle(
-                                                    fontWeight:
-                                                        FontWeight.w500,
+                                                    fontWeight: FontWeight.w500,
                                                     fontSize: 20),
                                               ),
                                             ),
@@ -123,8 +126,7 @@ class _MedicineState extends State<Medicine> {
                                               child: Text(
                                                 "${data[index]["to"]}->${data[index]["from"]}",
                                                 style: TextStyle(
-                                                    fontWeight:
-                                                        FontWeight.w500,
+                                                    fontWeight: FontWeight.w500,
                                                     fontSize: 12),
                                               ),
                                             ),
@@ -139,20 +141,17 @@ class _MedicineState extends State<Medicine> {
                                                   Container(
                                                       height: 26,
                                                       width: 98,
-                                                      decoration:
-                                                          BoxDecoration(
-                                                              //add radius
+                                                      decoration: BoxDecoration(
+                                                          //add radius
 
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          18),
-                                                              color: Color
-                                                                  .fromRGBO(
-                                                                      255,
-                                                                      255,
-                                                                      255,
-                                                                      0.5)),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(18),
+                                                          color: Color.fromRGBO(
+                                                              255,
+                                                              255,
+                                                              255,
+                                                              0.5)),
                                                       child: Center(
                                                           child: Text(
                                                         "Deliver",
@@ -167,14 +166,12 @@ class _MedicineState extends State<Medicine> {
                                                   GestureDetector(
                                                     onTap: () async {
                                                       await launch("tel://" +
-                                                          data[index]
-                                                              ["phone"]);
+                                                          data[index]["phone"]);
                                                     },
                                                     child: Container(
                                                       height: 33,
                                                       width: 33,
-                                                      decoration:
-                                                          BoxDecoration(
+                                                      decoration: BoxDecoration(
                                                         //give grey border
                                                         borderRadius:
                                                             BorderRadius
@@ -208,8 +205,79 @@ class _MedicineState extends State<Medicine> {
                         ]),
                   ))
                 : Center(child: CupertinoActivityIndicator()),
+            Align(
+                alignment: Alignment.bottomCenter,
+                child: Padding(
+                  padding: const EdgeInsets.all(13),
+                  child: Container(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            check = 0;
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Reminder()));
+                          },
+                          child: Icon(
+                            Icons.notification_add_outlined,
+                            color: Colors.white,
+                            size: 38,
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            check = 0;
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Home()));
+                          },
+                          child: Icon(Icons.list_alt_rounded,
+                              color: Colors.white, size: 38),
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Profile(
+                                          namefromprofile:
+                                              controller.username.value,
+                                        )));
+                          },
+                          child: Icon(Icons.person_outline_rounded,
+                              color: Colors.white, size: 38),
+                        ),
+                      ],
+                    ),
+                    height: 54,
+                    width: MediaQuery.of(context).size.width / 1.1,
+                    decoration: BoxDecoration(
+                      color: Colors.black,
+                      borderRadius: BorderRadius.circular(18),
+                    ),
+                  ),
+                )),
           ],
-        ));
+        ),
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: Colors.black,
+          child: Icon(
+            Icons.add,
+            color: Colors.white,
+          ),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Post_medicine()),
+            );
+          },
+        ),
+      ),
+    );
   }
 
   dynamic fetchToknens() async {

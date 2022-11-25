@@ -514,7 +514,7 @@ class _ReminderState extends State<Reminder> {
                             check=0;
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) =>  Profile(namefromprofile: "adamsy",)),
+                              MaterialPageRoute(builder: (context) =>  Profile(namefromprofile:  controller.username.value,)),
                             );
                           },
                             child: Icon(Icons.person_outline_rounded,

@@ -3,10 +3,14 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:glassmorphism/glassmorphism.dart';
-import 'package:healthcard/blogs.dart';
+import 'package:healthcard/Home.dart';
+import 'package:healthcard/delivery/Post_blood.dart';
+import 'package:healthcard/patient/Profile.dart';
+import 'package:healthcard/patient/Reminder.dart';
 import 'package:http/http.dart' as http;
 import 'package:url_launcher/url_launcher.dart';
 
+int check=0;
 class Blood extends StatefulWidget {
   @override
   State<Blood> createState() => _BloodState();
@@ -185,15 +189,39 @@ class _BloodState extends State<Blood> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Icon(
-                            Icons.notification_add_outlined,
-                            color: Colors.white,
-                            size: 38,
+                          GestureDetector(
+                            onTap: (){
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) =>  Reminder()),
+                              );
+                            },
+                            child: Icon(
+                              Icons.notification_add_outlined,
+                              color: Colors.white,
+                              size: 38,
+                            ),
                           ),
-                          Icon(Icons.list_alt_rounded,
-                              color: Colors.white, size: 38),
-                          Icon(Icons.person_outline_rounded,
-                              color: Colors.white, size: 38),
+                          GestureDetector(
+                            onTap: (){
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) =>  Home()),
+                              );
+                            },
+                            child: Icon(Icons.list_alt_rounded,
+                                color: Colors.white, size: 38),
+                          ),
+                          GestureDetector(
+                            onTap: (){
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) =>  Profile(namefromprofile: controller.username.value)),
+                              );
+                            },
+                            child: Icon(Icons.person_outline_rounded,
+                                color: Colors.white, size: 38),
+                          ),
                         ],
                       ),
                       height: 54,
@@ -205,7 +233,17 @@ class _BloodState extends State<Blood> {
                     ),
                   )),
             ],
-          )),
+          ),
+        floatingActionButton: FloatingActionButton(backgroundColor: Colors.black,
+          child: Icon(Icons.add,color: Colors.white,),
+          onPressed: (){
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) =>  Post_blood()),
+            );
+          },
+        ),
+      ),
     );
   }
 
