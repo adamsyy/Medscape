@@ -7,6 +7,7 @@ import 'package:healthcard/blogs/Blogs3.dart';
 import 'package:healthcard/delivery/Blood.dart';
 import 'package:healthcard/delivery/Medicine.dart';
 import 'package:healthcard/delivery/Post_blood.dart';
+import 'package:healthcard/delivery/Post_medicine.dart';
 import 'package:healthcard/doctor/Firstpage.dart';
 import 'package:healthcard/doctor/Viewinfo.dart';
 import 'package:healthcard/patient/Profile.dart';
@@ -39,7 +40,7 @@ class MyApp extends StatelessWidget {
 
           primarySwatch: Colors.blue,
         ),
-          home:Blood(),
+          home:Home(),
     );
   }
 }
