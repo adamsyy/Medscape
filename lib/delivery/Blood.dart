@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:glassmorphism/glassmorphism.dart';
 import 'package:healthcard/blogs.dart';
 import 'package:http/http.dart' as http;
+import 'package:url_launcher/url_launcher.dart';
 
 class Blood extends StatefulWidget {
   @override
@@ -61,7 +62,7 @@ class _BloodState extends State<Blood> {
                               itemCount: data.length,
                               itemBuilder: (context, index) {
                                 return Padding(
-                                  padding: const EdgeInsets.only(left: 13,right: 13),
+                                  padding: const EdgeInsets.only(left: 13,right: 13,bottom: 13),
                                   child: GlassmorphicContainer(
                                     width: 329,
                                     height: 107,
@@ -138,23 +139,28 @@ class _BloodState extends State<Blood> {
                                         SizedBox(
                                           width: 65,
                                         ),
-                                        Container(
-                                          height: 33,
-                                          width: 33,
-                                          decoration: BoxDecoration(
-                                            //give grey border
-                                            borderRadius:
-                                                BorderRadius.circular(18),
-                                            border: Border.all(
-                                              //give rounded boeder
+                                        GestureDetector(
+                                          onTap: ()async{
+                                            await launch("tel://"+data[index]["phone"]);
+                                          },
+                                          child: Container(
+                                            height: 33,
+                                            width: 33,
+                                            decoration: BoxDecoration(
+                                              //give grey border
+                                              borderRadius:
+                                                  BorderRadius.circular(18),
+                                              border: Border.all(
+                                                //give rounded boeder
 
-                                              color: Colors.grey,
-                                              width: 1,
+                                                color: Colors.grey,
+                                                width: 1,
+                                              ),
                                             ),
-                                          ),
-                                          child: Icon(
-                                            Icons.phone,
-                                            color: Colors.grey,
+                                            child: Icon(
+                                              Icons.phone,
+                                              color: Colors.grey,
+                                            ),
                                           ),
                                         )
                                       ],
