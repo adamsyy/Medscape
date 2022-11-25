@@ -1,5 +1,5 @@
 import 'dart:ui';
-
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 
 class Add_prescription extends StatefulWidget {
@@ -256,5 +256,35 @@ class _Add_prescriptionState extends State<Add_prescription> {
         child: Text("App content would be here"),
       ),*/
     );
+  }
+
+  dynamic fetchToknens() async {
+    print("oioioi");
+    Map newUpdate = {
+      "username": widget.namefromScan,
+      "doctor_username": "salmanxy"
+    };
+    final url = Uri.parse(c.url.toString() + "auth/user");
+    print(url.toString() + "url");
+
+    final response = await http.post(url,
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: jsonEncode(newUpdate));
+    // print(response.body);
+    if (response.statusCode == 200) {
+      setState(() {
+        data = json.decode(response.body)["user"];
+        print("///");
+        print(data);
+      });
+
+      setState(() {
+        check = 1;
+      });
+      return data;
+    }
   }
 }
