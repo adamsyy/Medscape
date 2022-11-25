@@ -1,6 +1,6 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
+import 'package:healthcard/auth_screens/Signup2.dart';
 
 class signUp1 extends StatefulWidget {
   const signUp1({Key? key}) : super(key: key);
@@ -306,7 +306,12 @@ class _signUp1State extends State<signUp1> {
                           alignment: FractionalOffset.bottomRight,
                           child: MaterialButton(
                             onPressed: () => {
-                              
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => Signup2(
+                                uname: unameController.text.toString(),
+                                email: emailController.text.toString(),
+                                name: fnameController.text.toString()+" "+lnameController.text.toString(),
+                                passwd: passwdController.text.toString(),
+                              )))
                             },
                             child: Container(
                               decoration: BoxDecoration(

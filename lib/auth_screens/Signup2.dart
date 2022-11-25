@@ -1,20 +1,73 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:healthcard/Home.dart';
+import 'package:http/http.dart';
 import 'package:glassmorphism/glassmorphism.dart';
-import 'package:healthcard/comps/Popupfopatient.dart';
-import 'package:healthcard/doctor/Addinfo.dart';
 import 'package:healthcard/patient/Adddetails.dart';
 
 class Signup2 extends StatefulWidget {
-  const Signup2({Key? key}) : super(key: key);
+  const Signup2({Key? key, required this.uname, required this.email, required this.name, required this.passwd}) : super(key: key);
+
+  final String uname,email,name,passwd;
 
   @override
   State<Signup2> createState() => _Signup2State();
 }
 
 class _Signup2State extends State<Signup2> {
+
+  String gender="male", blood_group="A+";
+  TextEditingController heightController = TextEditingController();
+  TextEditingController weightController= TextEditingController();
+  TextEditingController waistController = TextEditingController();
+
+  bool flag=false;
+
+  void signup(String blood_group , sex) async {
+    try{
+      Response response = await post(
+        Uri.parse('https://healthcard1.herokuapp.com/auth/signup'),
+        body: {
+          'username' : widget.uname,
+          'email' : widget.email,
+          'password' : widget.passwd,
+          'name' : widget.name,
+          'age' : "20",
+          'height': heightController.text.toString(),
+          'weight' : weightController.text.toString(),
+          'waist' : waistController.text.toString(),
+          'blood_group' : blood_group,
+          'sex' : gender,
+        }
+      );
+
+      if(response.statusCode == 200){
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Home()));
+      }else {
+        showDialog<String>(
+          context: context,
+          builder: (BuildContext context) => AlertDialog(
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
+            title: const Text('Incorrect credentials'),
+            content: const Text('The credentials you entered is incorrect. Please try again.'),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () => Navigator.pop(context, 'OK'),
+                child: const Text('OK', style: TextStyle(color: Color(0xff9AC9C2)),),
+              ),
+            ],
+          ),
+        );
+      }
+    }catch(e){
+      print(e.toString());
+    }
+    setState(() {
+      flag=false;
+    });
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -104,76 +157,90 @@ class _Signup2State extends State<Signup2> {
                                     SizedBox(
                                       height: 13,
                                     ),
-                                    GlassmorphicContainer(
-                                      width: 61,
-                                      height: 41,
-                                      borderRadius: 20,
-                                      blur: 20,
-                                      alignment: Alignment.bottomCenter,
-                                      border: 2,
-                                      linearGradient: LinearGradient(
+                                    GestureDetector(
+                                      onTap: () {
+                                        setState(() {
+                                          gender="male";
+                                        });
+                                      },
+                                      child: GlassmorphicContainer(
+                                        width: 61,
+                                        height: 41,
+                                        borderRadius: 20,
+                                        blur: 20,
+                                        alignment: Alignment.bottomCenter,
+                                        border: 2,
+                                        linearGradient: LinearGradient(
+                                            begin: Alignment.topLeft,
+                                            end: Alignment.bottomRight,
+                                            colors: gender!="male" ? [
+                                              Color.fromRGBO(255, 255, 255, 0.23),
+                                              Color(0xFFFFFFFF).withOpacity(0.23),
+                                            ]: [Color(0xff01BC8F),Color(0xff01BC8F),],
+                                            stops: [
+                                              0.1,
+                                              1,
+                                            ]),
+                                        borderGradient: LinearGradient(
                                           begin: Alignment.topLeft,
                                           end: Alignment.bottomRight,
                                           colors: [
-                                            Color.fromRGBO(255, 255, 255, 0.22),
-                                            Color(0xFFFFFFFF).withOpacity(0.05),
+                                            Colors.transparent,
+                                            Colors.transparent,
                                           ],
-                                          stops: [
-                                            0.1,
-                                            1,
-                                          ]),
-                                      borderGradient: LinearGradient(
-                                        begin: Alignment.topLeft,
-                                        end: Alignment.bottomRight,
-                                        colors: [
-                                          Colors.transparent,
-                                          Colors.transparent,
-                                        ],
-                                      ),
-                                      child: Center(
-                                        child: Text(
-                                          "M",
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.w500,
-                                              fontSize: 20),
+                                        ),
+                                        child: Center(
+                                          child: Text(
+                                            "M",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: 20),
+                                          ),
                                         ),
                                       ),
                                     ),
                                     SizedBox(
                                       height: 13,
                                     ),
-                                    GlassmorphicContainer(
-                                      width: 61,
-                                      height: 41,
-                                      borderRadius: 20,
-                                      blur: 20,
-                                      alignment: Alignment.bottomCenter,
-                                      border: 2,
-                                      linearGradient: LinearGradient(
+                                    GestureDetector(
+                                      onTap: () {
+                                        setState(() {
+                                          gender="female";
+                                        });
+                                      },
+                                      child: GlassmorphicContainer(
+                                        width: 61,
+                                        height: 41,
+                                        borderRadius: 20,
+                                        blur: 20,
+                                        alignment: Alignment.bottomCenter,
+                                        border: 2,
+                                        linearGradient: LinearGradient(
+                                            begin: Alignment.topLeft,
+                                            end: Alignment.bottomRight,
+                                            colors: gender=="male" ? [
+                                              Color.fromRGBO(255, 255, 255, 0.23),
+                                              Color(0xFFFFFFFF).withOpacity(0.23),
+                                            ]: [Color(0xff01BC8F),Color(0xff01BC8F),],
+                                            stops: [
+                                              0.1,
+                                              1,
+                                            ]),
+                                        borderGradient: LinearGradient(
                                           begin: Alignment.topLeft,
                                           end: Alignment.bottomRight,
                                           colors: [
-                                            Color.fromRGBO(255, 255, 255, 0.22),
-                                            Color(0xFFFFFFFF).withOpacity(0.05),
+                                            Colors.transparent,
+                                            Colors.transparent,
                                           ],
-                                          stops: [
-                                            0.1,
-                                            1,
-                                          ]),
-                                      borderGradient: LinearGradient(
-                                        begin: Alignment.topLeft,
-                                        end: Alignment.bottomRight,
-                                        colors: [
-                                          Colors.transparent,
-                                          Colors.transparent,
-                                        ],
-                                      ),
-                                      child: Center(
-                                        child: Text(
-                                          "F",
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.w500,
-                                              fontSize: 20),
+                                        ),
+                                        child: Center(
+                                          child: Text(
+                                            "F",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: 20),
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -287,159 +354,90 @@ class _Signup2State extends State<Signup2> {
                                   SizedBox(
                                     width: 10,
                                   ),
-                                  GlassmorphicContainer(
-                                    width: 61,
-                                    height: 41,
-                                    borderRadius: 20,
-                                    blur: 20,
-                                    alignment: Alignment.bottomCenter,
-                                    border: 2,
-                                    linearGradient: LinearGradient(
+                                  GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        blood_group="A+";
+                                      });
+                                    },
+                                    child: GlassmorphicContainer(
+                                      width: 61,
+                                      height: 41,
+                                      borderRadius: 20,
+                                      blur: 20,
+                                      alignment: Alignment.bottomCenter,
+                                      border: 2,
+                                      linearGradient: LinearGradient(
+                                          begin: Alignment.topLeft,
+                                          end: Alignment.bottomRight,
+                                          colors: blood_group=="A+" ? [Color(0xff01BC8F),Color(0xff01BC8F),] : [
+                                            Color.fromRGBO(255, 255, 255, 0.23),
+                                            Color(0xFFFFFFFF).withOpacity(0.23),
+                                          ],
+                                      stops: [
+                                        0.1,
+                                        1,
+                                      ]),
+                                      borderGradient: LinearGradient(
                                         begin: Alignment.topLeft,
                                         end: Alignment.bottomRight,
                                         colors: [
-                                          Color.fromRGBO(255, 255, 255, 0.23),
-                                          Color(0xFFFFFFFF).withOpacity(0.23),
+                                          Colors.transparent,
+                                          Colors.transparent,
                                         ],
-                                        stops: [
-                                          0.1,
-                                          1,
-                                        ]),
-                                    borderGradient: LinearGradient(
-                                      begin: Alignment.topLeft,
-                                      end: Alignment.bottomRight,
-                                      colors: [
-                                        Colors.transparent,
-                                        Colors.transparent,
-                                      ],
-                                    ),
-                                    child: Center(
-                                      child: Text(
-                                        "A+",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 20),
+                                      ),
+                                      child: Center(
+                                        child: Text(
+                                          "A+",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 20),
+                                        ),
                                       ),
                                     ),
                                   ),
                                   SizedBox(
                                     width: 10,
                                   ),
-                                  GlassmorphicContainer(
-                                    width: 61,
-                                    height: 41,
-                                    borderRadius: 20,
-                                    blur: 20,
-                                    alignment: Alignment.bottomCenter,
-                                    border: 2,
-                                    linearGradient: LinearGradient(
+                                  GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        blood_group="A-";
+                                      });
+                                    },
+                                    child: GlassmorphicContainer(
+                                      width: 61,
+                                      height: 41,
+                                      borderRadius: 20,
+                                      blur: 20,
+                                      alignment: Alignment.bottomCenter,
+                                      border: 2,
+                                      linearGradient: LinearGradient(
+                                          begin: Alignment.topLeft,
+                                          end: Alignment.bottomRight,
+                                          colors: blood_group=="A-" ? [Color(0xff01BC8F),Color(0xff01BC8F),] : [
+                                            Color.fromRGBO(255, 255, 255, 0.23),
+                                            Color(0xFFFFFFFF).withOpacity(0.23),
+                                          ],
+                                          stops: [
+                                            0.1,
+                                            1,
+                                          ]),
+                                      borderGradient: LinearGradient(
                                         begin: Alignment.topLeft,
                                         end: Alignment.bottomRight,
                                         colors: [
-                                          Color.fromRGBO(255, 255, 255, 0.23),
-                                          Color(0xFFFFFFFF).withOpacity(0.23),
+                                          Colors.transparent,
+                                          Colors.transparent,
                                         ],
-                                        stops: [
-                                          0.1,
-                                          1,
-                                        ]),
-                                    borderGradient: LinearGradient(
-                                      begin: Alignment.topLeft,
-                                      end: Alignment.bottomRight,
-                                      colors: [
-                                        Colors.transparent,
-                                        Colors.transparent,
-                                      ],
-                                    ),
-                                    child: Center(
-                                      child: Text(
-                                        "A-",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 20),
                                       ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                height: 15,
-                              ),
-                              Row(
-                                children: [
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  GlassmorphicContainer(
-                                    width: 61,
-                                    height: 41,
-                                    borderRadius: 20,
-                                    blur: 20,
-                                    alignment: Alignment.bottomCenter,
-                                    border: 2,
-                                    linearGradient: LinearGradient(
-                                        begin: Alignment.topLeft,
-                                        end: Alignment.bottomRight,
-                                        colors: [
-                                          Color.fromRGBO(255, 255, 255, 0.23),
-                                          Color(0xFFFFFFFF).withOpacity(0.23),
-                                        ],
-                                        stops: [
-                                          0.1,
-                                          1,
-                                        ]),
-                                    borderGradient: LinearGradient(
-                                      begin: Alignment.topLeft,
-                                      end: Alignment.bottomRight,
-                                      colors: [
-                                        Colors.transparent,
-                                        Colors.transparent,
-                                      ],
-                                    ),
-                                    child: Center(
-                                      child: Text(
-                                        "B+",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 20),
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  GlassmorphicContainer(
-                                    width: 61,
-                                    height: 41,
-                                    borderRadius: 20,
-                                    blur: 20,
-                                    alignment: Alignment.bottomCenter,
-                                    border: 2,
-                                    linearGradient: LinearGradient(
-                                        begin: Alignment.topLeft,
-                                        end: Alignment.bottomRight,
-                                        colors: [
-                                          Color.fromRGBO(255, 255, 255, 0.23),
-                                          Color(0xFFFFFFFF).withOpacity(0.23),
-                                        ],
-                                        stops: [
-                                          0.1,
-                                          1,
-                                        ]),
-                                    borderGradient: LinearGradient(
-                                      begin: Alignment.topLeft,
-                                      end: Alignment.bottomRight,
-                                      colors: [
-                                        Colors.transparent,
-                                        Colors.transparent,
-                                      ],
-                                    ),
-                                    child: Center(
-                                      child: Text(
-                                        "B-",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 20),
+                                      child: Center(
+                                        child: Text(
+                                          "A-",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 20),
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -453,76 +451,90 @@ class _Signup2State extends State<Signup2> {
                                   SizedBox(
                                     width: 10,
                                   ),
-                                  GlassmorphicContainer(
-                                    width: 61,
-                                    height: 41,
-                                    borderRadius: 20,
-                                    blur: 20,
-                                    alignment: Alignment.bottomCenter,
-                                    border: 2,
-                                    linearGradient: LinearGradient(
+                                  GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        blood_group="B+";
+                                      });
+                                    },
+                                    child: GlassmorphicContainer(
+                                      width: 61,
+                                      height: 41,
+                                      borderRadius: 20,
+                                      blur: 20,
+                                      alignment: Alignment.bottomCenter,
+                                      border: 2,
+                                      linearGradient: LinearGradient(
+                                          begin: Alignment.topLeft,
+                                          end: Alignment.bottomRight,
+                                          colors: blood_group=="B+" ? [Color(0xff01BC8F),Color(0xff01BC8F),] : [
+                                            Color.fromRGBO(255, 255, 255, 0.23),
+                                            Color(0xFFFFFFFF).withOpacity(0.23),
+                                          ],
+                                          stops: [
+                                            0.1,
+                                            1,
+                                          ]),
+                                      borderGradient: LinearGradient(
                                         begin: Alignment.topLeft,
                                         end: Alignment.bottomRight,
                                         colors: [
-                                          Color.fromRGBO(255, 255, 255, 0.23),
-                                          Color(0xFFFFFFFF).withOpacity(0.23),
+                                          Colors.transparent,
+                                          Colors.transparent,
                                         ],
-                                        stops: [
-                                          0.1,
-                                          1,
-                                        ]),
-                                    borderGradient: LinearGradient(
-                                      begin: Alignment.topLeft,
-                                      end: Alignment.bottomRight,
-                                      colors: [
-                                        Colors.transparent,
-                                        Colors.transparent,
-                                      ],
-                                    ),
-                                    child: Center(
-                                      child: Text(
-                                        "AB+",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 20),
+                                      ),
+                                      child: Center(
+                                        child: Text(
+                                          "B+",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 20),
+                                        ),
                                       ),
                                     ),
                                   ),
                                   SizedBox(
                                     width: 10,
                                   ),
-                                  GlassmorphicContainer(
-                                    width: 61,
-                                    height: 41,
-                                    borderRadius: 20,
-                                    blur: 20,
-                                    alignment: Alignment.bottomCenter,
-                                    border: 2,
-                                    linearGradient: LinearGradient(
+                                  GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        blood_group="B-";
+                                      });
+                                    },
+                                    child: GlassmorphicContainer(
+                                      width: 61,
+                                      height: 41,
+                                      borderRadius: 20,
+                                      blur: 20,
+                                      alignment: Alignment.bottomCenter,
+                                      border: 2,
+                                      linearGradient: LinearGradient(
+                                          begin: Alignment.topLeft,
+                                          end: Alignment.bottomRight,
+                                          colors: blood_group=="B-" ? [Color(0xff01BC8F),Color(0xff01BC8F),] : [
+                                            Color.fromRGBO(255, 255, 255, 0.23),
+                                            Color(0xFFFFFFFF).withOpacity(0.23),
+                                          ],
+                                          stops: [
+                                            0.1,
+                                            1,
+                                          ]),
+                                      borderGradient: LinearGradient(
                                         begin: Alignment.topLeft,
                                         end: Alignment.bottomRight,
                                         colors: [
-                                          Color.fromRGBO(255, 255, 255, 0.23),
-                                          Color(0xFFFFFFFF).withOpacity(0.23),
+                                          Colors.transparent,
+                                          Colors.transparent,
                                         ],
-                                        stops: [
-                                          0.1,
-                                          1,
-                                        ]),
-                                    borderGradient: LinearGradient(
-                                      begin: Alignment.topLeft,
-                                      end: Alignment.bottomRight,
-                                      colors: [
-                                        Colors.transparent,
-                                        Colors.transparent,
-                                      ],
-                                    ),
-                                    child: Center(
-                                      child: Text(
-                                        "AB-",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 20),
+                                      ),
+                                      child: Center(
+                                        child: Text(
+                                          "B-",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 20),
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -536,76 +548,187 @@ class _Signup2State extends State<Signup2> {
                                   SizedBox(
                                     width: 10,
                                   ),
-                                  GlassmorphicContainer(
-                                    width: 61,
-                                    height: 41,
-                                    borderRadius: 20,
-                                    blur: 20,
-                                    alignment: Alignment.bottomCenter,
-                                    border: 2,
-                                    linearGradient: LinearGradient(
+                                  GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        blood_group="AB+";
+                                      });
+                                    },
+                                    child: GlassmorphicContainer(
+                                      width: 61,
+                                      height: 41,
+                                      borderRadius: 20,
+                                      blur: 20,
+                                      alignment: Alignment.bottomCenter,
+                                      border: 2,
+                                      linearGradient: LinearGradient(
+                                          begin: Alignment.topLeft,
+                                          end: Alignment.bottomRight,
+                                          colors: blood_group=="AB+" ? [Color(0xff01BC8F),Color(0xff01BC8F),] : [
+                                            Color.fromRGBO(255, 255, 255, 0.23),
+                                            Color(0xFFFFFFFF).withOpacity(0.23),
+                                          ],
+                                          stops: [
+                                            0.1,
+                                            1,
+                                          ]),
+                                      borderGradient: LinearGradient(
                                         begin: Alignment.topLeft,
                                         end: Alignment.bottomRight,
                                         colors: [
-                                          Color.fromRGBO(255, 255, 255, 0.23),
-                                          Color(0xFFFFFFFF).withOpacity(0.23),
+                                          Colors.transparent,
+                                          Colors.transparent,
                                         ],
-                                        stops: [
-                                          0.1,
-                                          1,
-                                        ]),
-                                    borderGradient: LinearGradient(
-                                      begin: Alignment.topLeft,
-                                      end: Alignment.bottomRight,
-                                      colors: [
-                                        Colors.transparent,
-                                        Colors.transparent,
-                                      ],
-                                    ),
-                                    child: Center(
-                                      child: Text(
-                                        "O+",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 20),
+                                      ),
+                                      child: Center(
+                                        child: Text(
+                                          "AB+",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 20),
+                                        ),
                                       ),
                                     ),
                                   ),
                                   SizedBox(
                                     width: 10,
                                   ),
-                                  GlassmorphicContainer(
-                                    width: 61,
-                                    height: 41,
-                                    borderRadius: 20,
-                                    blur: 20,
-                                    alignment: Alignment.bottomCenter,
-                                    border: 2,
-                                    linearGradient: LinearGradient(
+                                  GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        blood_group="AB-";
+                                      });
+                                    },
+                                    child: GlassmorphicContainer(
+                                      width: 61,
+                                      height: 41,
+                                      borderRadius: 20,
+                                      blur: 20,
+                                      alignment: Alignment.bottomCenter,
+                                      border: 2,
+                                      linearGradient: LinearGradient(
+                                          begin: Alignment.topLeft,
+                                          end: Alignment.bottomRight,
+                                          colors: blood_group=="AB-" ? [Color(0xff01BC8F),Color(0xff01BC8F),] : [
+                                            Color.fromRGBO(255, 255, 255, 0.23),
+                                            Color(0xFFFFFFFF).withOpacity(0.23),
+                                          ],
+                                          stops: [
+                                            0.1,
+                                            1,
+                                          ]),
+                                      borderGradient: LinearGradient(
                                         begin: Alignment.topLeft,
                                         end: Alignment.bottomRight,
                                         colors: [
-                                          Color.fromRGBO(255, 255, 255, 0.23),
-                                          Color(0xFFFFFFFF).withOpacity(0.23),
+                                          Colors.transparent,
+                                          Colors.transparent,
                                         ],
-                                        stops: [
-                                          0.1,
-                                          1,
-                                        ]),
-                                    borderGradient: LinearGradient(
-                                      begin: Alignment.topLeft,
-                                      end: Alignment.bottomRight,
-                                      colors: [
-                                        Colors.transparent,
-                                        Colors.transparent,
-                                      ],
+                                      ),
+                                      child: Center(
+                                        child: Text(
+                                          "AB-",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 20),
+                                        ),
+                                      ),
                                     ),
-                                    child: Center(
-                                      child: Text(
-                                        "O-",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 20),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 15,
+                              ),
+                              Row(
+                                children: [
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        blood_group="O+";
+                                      });
+                                    },
+                                    child: GlassmorphicContainer(
+                                      width: 61,
+                                      height: 41,
+                                      borderRadius: 20,
+                                      blur: 20,
+                                      alignment: Alignment.bottomCenter,
+                                      border: 2,
+                                      linearGradient: LinearGradient(
+                                          begin: Alignment.topLeft,
+                                          end: Alignment.bottomRight,
+                                          colors: blood_group=="O+" ? [Color(0xff01BC8F),Color(0xff01BC8F),] : [
+                                            Color.fromRGBO(255, 255, 255, 0.23),
+                                            Color(0xFFFFFFFF).withOpacity(0.23),
+                                          ],
+                                          stops: [
+                                            0.1,
+                                            1,
+                                          ]),
+                                      borderGradient: LinearGradient(
+                                        begin: Alignment.topLeft,
+                                        end: Alignment.bottomRight,
+                                        colors: [
+                                          Colors.transparent,
+                                          Colors.transparent,
+                                        ],
+                                      ),
+                                      child: Center(
+                                        child: Text(
+                                          "O+",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 20),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        blood_group="O-";
+                                      });
+                                    },
+                                    child: GlassmorphicContainer(
+                                      width: 61,
+                                      height: 41,
+                                      borderRadius: 20,
+                                      blur: 20,
+                                      alignment: Alignment.bottomCenter,
+                                      border: 2,
+                                      linearGradient: LinearGradient(
+                                          begin: Alignment.topLeft,
+                                          end: Alignment.bottomRight,
+                                          colors: blood_group=="O-" ? [Color(0xff01BC8F),Color(0xff01BC8F),] : [
+                                            Color.fromRGBO(255, 255, 255, 0.23),
+                                            Color(0xFFFFFFFF).withOpacity(0.23),
+                                          ],
+                                          stops: [
+                                            0.1,
+                                            1,
+                                          ]),
+                                      borderGradient: LinearGradient(
+                                        begin: Alignment.topLeft,
+                                        end: Alignment.bottomRight,
+                                        colors: [
+                                          Colors.transparent,
+                                          Colors.transparent,
+                                        ],
+                                      ),
+                                      child: Center(
+                                        child: Text(
+                                          "O-",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 20),
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -707,6 +830,7 @@ class _Signup2State extends State<Signup2> {
                                 ),
                                 child: Center(
                                   child: TextField(
+                                    controller: heightController,
                                     textAlign: TextAlign.center,
                                     decoration: InputDecoration(
                                       border: InputBorder.none,
@@ -749,6 +873,7 @@ class _Signup2State extends State<Signup2> {
                                 ),
                                 child: Center(
                                   child: TextField(
+                                    controller: weightController,
                                     textAlign: TextAlign.center,
                                     decoration: InputDecoration(
                                       border: InputBorder.none,
@@ -791,6 +916,7 @@ class _Signup2State extends State<Signup2> {
                                 ),
                                 child: Center(
                                   child: TextField(
+                                    controller: waistController,
                                     textAlign: TextAlign.center,
                                     decoration: InputDecoration(
                                       border: InputBorder.none,
@@ -812,22 +938,29 @@ class _Signup2State extends State<Signup2> {
                           ),
                           Padding(
                             padding: EdgeInsets.only(left: 200, right: 0),
-                            child: Container(
-                                height: 42,
-                                width: 131,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(12),
-                                  color: Color.fromRGBO(122, 135, 251, 1),
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    "Sign up",
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w400),
+                            child: GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  flag = true;
+                                });
+                                signup(blood_group, gender);
+                              },
+                              child: Container(
+                                  height: 42,
+                                  width: 131,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(12),
+                                    color: Color.fromRGBO(122, 135, 251, 1),
                                   ),
-                                )),
+                                  child: Center(
+                                    child: (!flag ? const Text("sign up", style: TextStyle(fontSize: 20,fontWeight: FontWeight.w400, color: Color(0xff000000)),) : 
+                                    const SpinKitFadingCircle(
+                                      color: Colors.black,
+                                      size: 20,
+                                    )),
+                                  ),
+                              )
+                            ),
                           )
                         ],
                       ),
@@ -850,19 +983,25 @@ class _Signup2State extends State<Signup2> {
         Positioned(
           bottom: 550,
           left: 10,
-          child: Container(
-            //give box decoration to this container
-            height: 77,
-            width: 34,
-            decoration: BoxDecoration(
-              color: Color.fromRGBO(122, 135, 251, 1),
-              borderRadius: BorderRadius.all(Radius.circular(12)),
-            ),
-            margin: EdgeInsets.only(left: 12),
-            child: Icon(
-              Icons.arrow_back_ios_new,
-              color: Colors.black,
-              size: 30,
+          child: GestureDetector(
+            onTap: () {
+
+              Navigator.pop(context);
+            },
+            child: Container(
+              //give box decoration to this container
+              height: 77,
+              width: 34,
+              decoration: BoxDecoration(
+                color: Color.fromRGBO(122, 135, 251, 1),
+                borderRadius: BorderRadius.all(Radius.circular(12)),
+              ),
+              margin: EdgeInsets.only(left: 12),
+              child: Icon(
+                Icons.arrow_back_ios_new,
+                color: Colors.black,
+                size: 30,
+              ),
             ),
           ),
         ),
