@@ -33,393 +33,586 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(onWillPop: () async => false,
+    return WillPopScope(
+      onWillPop: () async => false,
       child: Scaffold(
           backgroundColor: Color(0xff9AC9C2),
           body: Stack(
             children: [
-             SingleChildScrollView(
-                      child: Container(
-                      padding: EdgeInsets.all(10),
-                      child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            SizedBox(
-                              height: 30,
+              SingleChildScrollView(
+                  child: Container(
+                padding: EdgeInsets.all(10),
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        height: 30,
+                      ),
+                      Row(
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => QRViewExample()),
+                              );
+                            },
+                            child: Image.asset(
+                              "pics/logo.png",
+                              width: 41,
                             ),
-                            Row(
-                              children: [
-                                GestureDetector(
-                                  onTap: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => QRViewExample()),
-                                    );
-                                  },
-                                  child: Image.asset(
-                                    "pics/logo.png",
-                                    width: 41,
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 5,
-                                ),
-                                Text(
-                                  "MedScape",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w500, fontSize: 18),
-                                ),
+                          ),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Text(
+                            "MedScape",
+                            style: TextStyle(
+                                fontWeight: FontWeight.w500, fontSize: 18),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 60,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 20),
+                        child: GlassmorphicContainer(
+                          width: 329,
+                          height: 168,
+                          borderRadius: 21,
+                          blur: 20,
+                          alignment: Alignment.bottomCenter,
+                          border: 2,
+                          linearGradient: LinearGradient(
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                              colors: [
+                                Color(0xFFffffff).withOpacity(0.3),
+                                Color(0xFFFFFFFF).withOpacity(0.1),
                               ],
-                            ),
-                            SizedBox(
-                              height: 60,
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 20),
-                              child: GlassmorphicContainer(
-                                width: 329,
-                                height: 168,
-                                borderRadius: 21,
-                                blur: 20,
-                                alignment: Alignment.bottomCenter,
-                                border: 2,
-                                linearGradient: LinearGradient(
-                                    begin: Alignment.topLeft,
-                                    end: Alignment.bottomRight,
-                                    colors: [
-                                      Color(0xFFffffff).withOpacity(0.3),
-                                      Color(0xFFFFFFFF).withOpacity(0.1),
-                                    ],
-                                    stops: [
-                                      0.1,
-                                      1,
-                                    ]),
-                                borderGradient: LinearGradient(
-                                  begin: Alignment.topLeft,
-                                  end: Alignment.bottomRight,
-                                  colors: [
-                                    Colors.transparent,
-                                    Colors.transparent,
-                                  ],
-                                ),
-                                child: Row(
-                                  children: [
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Text(
-                                            "Health This",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.w500,
-                                                fontSize: 20),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Text(
-                                            "Week!",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.w500,
-                                                fontSize: 20),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: 20,
-                                        ),
-                                        GestureDetector(
-                                          onTap: () {
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) => Blogs2()),
-                                            );
-                                          },
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(8.0),
-                                            child: Container(
-                                                height: 26,
-                                                width: 98,
-                                                decoration: BoxDecoration(
-                                                    //add radius
+                              stops: [
+                                0.1,
+                                1,
+                              ]),
+                          borderGradient: LinearGradient(
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                            colors: [
+                              Colors.transparent,
+                              Colors.transparent,
+                            ],
+                          ),
+                          child: Row(
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                      "Health This",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 20),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                      "Week!",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 20),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 20,
+                                  ),
+                                  GestureDetector(
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => Blogs2()),
+                                      );
+                                    },
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Container(
+                                          height: 26,
+                                          width: 98,
+                                          decoration: BoxDecoration(
+                                              //add radius
 
-                                                    borderRadius:
-                                                        BorderRadius.circular(18),
-                                                    color: Color.fromRGBO(
-                                                        255, 255, 255, 0.5)),
-                                                child: Center(
-                                                    child: Text("Read more"))),
+                                              borderRadius:
+                                                  BorderRadius.circular(18),
+                                              color: Color.fromRGBO(
+                                                  255, 255, 255, 0.5)),
+                                          child:
+                                              Center(child: Text("Read more"))),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                width: 20,
+                              ),
+                              Image.asset(
+                                "pics/blog.png",
+                                width: 167,
+                                height: 103,
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 20),
+                        child: GlassmorphicContainer(
+                          width: 329,
+                          height: 200,
+                          borderRadius: 20,
+                          blur: 20,
+                          alignment: Alignment.bottomCenter,
+                          border: 2,
+                          linearGradient: LinearGradient(
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                              colors: [
+                                Color(0xFFffffff).withOpacity(0.1),
+                                Color(0xFFFFFFFF).withOpacity(0.05),
+                              ],
+                              stops: [
+                                0.1,
+                                1,
+                              ]),
+                          borderGradient: LinearGradient(
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                            colors: [
+                              Colors.transparent,
+                              Colors.transparent,
+                            ],
+                          ),
+                          child: Column(
+                            children: [
+                              Row(
+                                children: [
+                                  SizedBox(
+                                    width: 8,
+                                  ),
+                                  GestureDetector(
+                                    onTap: () async {
+                                      final Uri _url = Uri.parse(
+                                          "geo:${controller.lat},${controller.long}?q=hospitals");
+                                      await launch(_url.toString());
+                                    },
+                                    child: Column(
+                                      children: [
+                                        Container(
+                                          height: 80,
+                                          width: 70,
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(18),
+                                              color: Color.fromRGBO(
+                                                  255, 255, 255, 0.5)),
+                                          child: Center(
+                                            child: Column(
+                                              children: [
+                                                SizedBox(
+                                                  height: 10,
+                                                ),
+                                                Image.asset(
+                                                  "pics/home1.png",
+                                                  width: 36,
+                                                  height: 33,
+                                                ),
+                                                Text(
+                                                  "Nearby",
+                                                  style: TextStyle(
+                                                      fontWeight: FontWeight.w500,
+                                                      fontSize: 10),
+                                                ),
+                                                Text(
+                                                  "Hospitals",
+                                                  style: TextStyle(
+                                                      fontWeight: FontWeight.w500,
+                                                      fontSize: 10),
+                                                ),
+                                              ],
+                                            ),
                                           ),
                                         ),
                                       ],
                                     ),
-                                    SizedBox(
-                                      width: 20,
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  GestureDetector(
+                                    onTap: () async {
+                                      final Uri _url = Uri.parse(
+                                          "geo:${controller.lat},${controller.long}?q=pharmacy");
+                                      await launch(_url.toString());
+                                    },
+                                    child: Column(
+                                      children: [
+                                        Container(
+                                          height: 80,
+                                          width: 70,
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(18),
+                                              color: Color.fromRGBO(
+                                                  255, 255, 255, 0.5)),
+                                          child: Center(
+                                            child: Column(
+                                              children: [
+                                                SizedBox(
+                                                  height: 10,
+                                                ),
+                                                Image.asset(
+                                                  "pics/home2.png",
+                                                  width: 36,
+                                                  height: 33,
+                                                ),
+                                                Text(
+                                                  "Nearby",
+                                                  style: TextStyle(
+                                                      fontWeight: FontWeight.w500,
+                                                      fontSize: 10),
+                                                ),
+                                                Text(
+                                                  "Pharmasy",
+                                                  style: TextStyle(
+                                                      fontWeight: FontWeight.w500,
+                                                      fontSize: 10),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ],
                                     ),
-                                    Image.asset(
-                                      "pics/blog.png",
-                                      width: 167,
-                                      height: 103,
-                                    )
-                                  ],
-                                ),
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  GestureDetector(
+                                    onTap: () async {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => Medicine()),
+                                      );
+                                    },
+                                    child: Column(
+                                      children: [
+                                        Container(
+                                          height: 80,
+                                          width: 70,
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(18),
+                                              color: Color.fromRGBO(
+                                                  255, 255, 255, 0.5)),
+                                          child: Center(
+                                            child: Column(
+                                              children: [
+                                                SizedBox(
+                                                  height: 10,
+                                                ),
+                                                Image.asset(
+                                                  "pics/home3.png",
+                                                  width: 36,
+                                                  height: 33,
+                                                ),
+                                                Text(
+                                                  "Deliver",
+                                                  style: TextStyle(
+                                                      fontWeight: FontWeight.w500,
+                                                      fontSize: 10),
+                                                ),
+                                                Text(
+                                                  "Medicnes",
+                                                  style: TextStyle(
+                                                      fontWeight: FontWeight.w500,
+                                                      fontSize: 10),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  GestureDetector(
+                                    onTap: () async {
+                                      print("ehhh");
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => Blood()),
+                                      );
+                                    },
+                                    child: Column(
+                                      children: [
+                                        Container(
+                                          height: 80,
+                                          width: 70,
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(18),
+                                              color: Color.fromRGBO(
+                                                  255, 255, 255, 0.5)),
+                                          child: Center(
+                                            child: Column(
+                                              children: [
+                                                SizedBox(
+                                                  height: 10,
+                                                ),
+                                                Image.asset(
+                                                  "pics/home4.png",
+                                                  width: 36,
+                                                  height: 33,
+                                                ),
+                                                Text(
+                                                  "Donate",
+                                                  style: TextStyle(
+                                                      fontWeight: FontWeight.w500,
+                                                      fontSize: 10),
+                                                ),
+                                                Text(
+                                                  "Blood",
+                                                  style: TextStyle(
+                                                      fontWeight: FontWeight.w500,
+                                                      fontSize: 10),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                ],
                               ),
-                            ),
-                            SizedBox(
-                              height: 20,
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 20),
-                              child: GlassmorphicContainer(
-                                width: 329,
-                                height: 88,
-                                borderRadius: 20,
-                                blur: 20,
-                                alignment: Alignment.bottomCenter,
-                                border: 2,
-                                linearGradient: LinearGradient(
-                                    begin: Alignment.topLeft,
-                                    end: Alignment.bottomRight,
-                                    colors: [
-                                      Color(0xFFffffff).withOpacity(0.1),
-                                      Color(0xFFFFFFFF).withOpacity(0.05),
-                                    ],
-                                    stops: [
-                                      0.1,
-                                      1,
-                                    ]),
-                                borderGradient: LinearGradient(
-                                  begin: Alignment.topLeft,
-                                  end: Alignment.bottomRight,
-                                  colors: [
-                                    Colors.transparent,
-                                    Colors.transparent,
-                                  ],
-                                ),
-                                child: Row(
-                                  children: [
-                                    SizedBox(
-                                      width: 8,
-                                    ),
-                                    GestureDetector(
-                                      onTap: () async {
-                                        final Uri _url = Uri.parse(
-                                            "geo:${controller.lat},${controller.long}?q=hospitals");
-                                        await launch(_url.toString());
-                                      },
-                                      child: Column(
-                                        children: [
-                                          Container(
-                                            height: 80,
-                                            width: 70,
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(18),
-                                                color: Color.fromRGBO(
-                                                    255, 255, 255, 0.5)),
-                                            child: Center(
-                                              child: Column(
-                                                children: [
-                                                  SizedBox(
-                                                    height: 10,
-                                                  ),
-                                                  Image.asset(
-                                                    "pics/home1.png",
-                                                    width: 36,
-                                                    height: 33,
-                                                  ),
-                                                  Text(
-                                                    "Nearby",
-                                                    style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                        fontSize: 10),
-                                                  ),
-                                                  Text(
-                                                    "Hospitals",
-                                                    style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                        fontSize: 10),
-                                                  ),
-                                                ],
-                                              ),
+                              SizedBox(height: 16,),
+                              Row(
+                                children: [
+                                  SizedBox(
+                                    width: 8,
+                                  ),
+
+                                  GestureDetector(
+                                    onTap: () async {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(builder: (context) => const Blogs2()),
+                                      );
+                                    },
+                                    child: Column(
+                                      children: [
+                                        Container(
+                                          height: 80,
+                                          width: 70,
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                              BorderRadius.circular(18),
+                                              color: Color.fromRGBO(
+                                                  255, 255, 255, 0.5)),
+                                          child: Center(
+                                            child: Column(
+                                              children: [
+                                                SizedBox(
+                                                  height: 10,
+                                                ),
+                                                Image.asset(
+                                                  "pics/home2.png",
+                                                  width: 36,
+                                                  height: 33,
+                                                ),
+                                               SizedBox(height: 5,),
+                                                Text(
+                                                  "Blogs",
+                                                  style: TextStyle(
+                                                      fontWeight: FontWeight.w500,
+                                                      fontSize: 10),
+                                                ),
+                                              ],
                                             ),
                                           ),
-                                        ],
-                                      ),
+                                        ),
+                                      ],
                                     ),
-                                    SizedBox(
-                                      width: 10,
-                                    ),
-                                    GestureDetector(
-                                      onTap: () async {
-                                        final Uri _url = Uri.parse(
-                                            "geo:${controller.lat},${controller.long}?q=pharmacy");
-                                        await launch(_url.toString());
-                                      },
-                                      child: Column(
-                                        children: [
-                                          Container(
-                                            height: 80,
-                                            width: 70,
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(18),
-                                                color: Color.fromRGBO(
-                                                    255, 255, 255, 0.5)),
-                                            child: Center(
-                                              child: Column(
-                                                children: [
-                                                  SizedBox(
-                                                    height: 10,
-                                                  ),
-                                                  Image.asset(
-                                                    "pics/home2.png",
-                                                    width: 36,
-                                                    height: 33,
-                                                  ),
-                                                  Text(
-                                                    "Nearby",
-                                                    style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                        fontSize: 10),
-                                                  ),
-                                                  Text(
-                                                    "Pharmasy",
-                                                    style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                        fontSize: 10),
-                                                  ),
-                                                ],
-                                              ),
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  GestureDetector(
+                                    onTap: () async {
+                                      // Navigator.push(
+                                      //   context,
+                                      //   MaterialPageRoute(
+                                      //       builder: (context) => Medicine()),
+                                      // );
+                                    },
+                                    child: Column(
+                                      children: [
+                                        Container(
+                                          height: 80,
+                                          width: 70,
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                              BorderRadius.circular(18),
+                                              color: Color.fromRGBO(
+                                                  255, 255, 255, 0.5)),
+                                          child: Center(
+                                            child: Column(
+                                              children: [
+                                                SizedBox(
+                                                  height: 10,
+                                                ),
+                                                Image.asset(
+                                                  "pics/home3.png",
+                                                  width: 36,
+                                                  height: 33,
+                                                ),
+                                                Text(
+                                                  "Coverage",
+                                                  style: TextStyle(
+                                                      fontWeight: FontWeight.w500,
+                                                      fontSize: 10),
+                                                ),
+                                                Text(
+                                                  "Scores",
+                                                  style: TextStyle(
+                                                      fontWeight: FontWeight.w500,
+                                                      fontSize: 10),
+                                                ),
+                                              ],
                                             ),
                                           ),
-                                        ],
-                                      ),
+                                        ),
+                                      ],
                                     ),
-                                    SizedBox(
-                                      width: 10,
-                                    ),
-                                    GestureDetector(
-                                      onTap: () async {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) => Medicine()),
-                                        );
-                                      },
-                                      child: Column(
-                                        children: [
-                                          Container(
-                                            height: 80,
-                                            width: 70,
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(18),
-                                                color: Color.fromRGBO(
-                                                    255, 255, 255, 0.5)),
-                                            child: Center(
-                                              child: Column(
-                                                children: [
-                                                  SizedBox(
-                                                    height: 10,
-                                                  ),
-                                                  Image.asset(
-                                                    "pics/home3.png",
-                                                    width: 36,
-                                                    height: 33,
-                                                  ),
-                                                  Text(
-                                                    "Deliver",
-                                                    style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                        fontSize: 10),
-                                                  ),
-                                                  Text(
-                                                    "Medicnes",
-                                                    style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                        fontSize: 10),
-                                                  ),
-                                                ],
-                                              ),
+                                  ),
+                                  SizedBox(width: 10,),
+                                  GestureDetector(
+                                    onTap: () async {
+
+                                    },
+                                    child: Column(
+                                      children: [
+                                        Container(
+                                          height: 80,
+                                          width: 70,
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                              BorderRadius.circular(18),
+                                              color: Color.fromRGBO(
+                                                  255, 255, 255, 0.5)),
+                                          child: Center(
+                                            child: Column(
+                                              children: [
+                                                SizedBox(
+                                                  height: 10,
+                                                ),
+                                                Image.asset(
+                                                  "pics/home3.png",
+                                                  width: 36,
+                                                  height: 33,
+                                                ),
+                                                Text(
+                                                  "Health",
+                                                  style: TextStyle(
+                                                      fontWeight: FontWeight.w500,
+                                                      fontSize: 10),
+                                                ),
+                                                Text(
+                                                  "score",
+                                                  style: TextStyle(
+                                                      fontWeight: FontWeight.w500,
+                                                      fontSize: 10),
+                                                ),
+                                              ],
                                             ),
                                           ),
-                                        ],
-                                      ),
+                                        ),
+                                      ],
                                     ),
-                                    SizedBox(
-                                      width: 10,
-                                    ),
-                                    GestureDetector(
-                                      onTap: () async {
-                                        print("ehhh");
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) => Blood()),
-                                        );
-                                      },
-                                      child: Column(
-                                        children: [
-                                          Container(
-                                            height: 80,
-                                            width: 70,
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(18),
-                                                color: Color.fromRGBO(
-                                                    255, 255, 255, 0.5)),
-                                            child: Center(
-                                              child: Column(
-                                                children: [
-                                                  SizedBox(
-                                                    height: 10,
-                                                  ),
-                                                  Image.asset(
-                                                    "pics/home4.png",
-                                                    width: 36,
-                                                    height: 33,
-                                                  ),
-                                                  Text(
-                                                    "Donate",
-                                                    style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                        fontSize: 10),
-                                                  ),
-                                                  Text(
-                                                    "Blood",
-                                                    style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                        fontSize: 10),
-                                                  ),
-                                                ],
-                                              ),
+                                  ),
+                                  SizedBox(width: 10,),
+                                  GestureDetector(
+                                    onTap: () async {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => Medicine()),
+                                      );
+                                    },
+                                    child: Column(
+                                      children: [
+                                        Container(
+                                          height: 80,
+                                          width: 70,
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                              BorderRadius.circular(18),
+                                              color: Color.fromRGBO(
+                                                  255, 255, 255, 0.5)),
+                                          child: Center(
+                                            child: Column(
+                                              children: [
+                                                SizedBox(
+                                                  height: 10,
+                                                ),
+                                                Image.asset(
+                                                  "pics/home3.png",
+                                                  width: 36,
+                                                  height: 33,
+                                                ),
+                                                Text(
+                                                  "fake",
+                                                  style: TextStyle(
+                                                      fontWeight: FontWeight.w500,
+                                                      fontSize: 10),
+                                                ),
+                                                Text(
+                                                  "ahne",
+                                                  style: TextStyle(
+                                                      fontWeight: FontWeight.w500,
+                                                      fontSize: 10),
+                                                ),
+                                              ],
                                             ),
                                           ),
-                                        ],
-                                      ),
+                                        ),
+                                      ],
                                     ),
-                                    SizedBox(
-                                      width: 10,
-                                    ),
-                                  ],
-                                ),
+                                  ),
+
+
+                                ],
                               ),
-                            ),
-                          ]),
-                    ))
-                  ,
+                            ],
+                          ),
+                        ),
+                      ),
+                    ]),
+              )),
               Align(
                   alignment: Alignment.bottomCenter,
                   child: Padding(
@@ -430,7 +623,6 @@ class _HomeState extends State<Home> {
                         children: [
                           GestureDetector(
                             onTap: () {
-
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
@@ -447,7 +639,6 @@ class _HomeState extends State<Home> {
                               color: Colors.white, size: 38),
                           GestureDetector(
                             onTap: () {
-
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
