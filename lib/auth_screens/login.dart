@@ -2,9 +2,14 @@ import 'dart:convert';
 
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:healthcard/Controller.dart';
 import 'package:healthcard/Home.dart';
 import 'package:healthcard/auth_screens/signUp1.dart';
 import 'package:http/http.dart';
+
+Controller c = Get.put(Controller());
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -19,15 +24,19 @@ class _LoginState extends State<Login> {
 
   void login(String email , password) async {
     try{
-      Response response = await post(
+      controller.username.value=email;
+      final response = await post(
         Uri.parse('https://healthcard1.herokuapp.com/auth/login'),
         body: {
           'username' : email,
           'password' : password
         }
+
+
       );
 
       if(response.statusCode == 200){
+
         Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Home()));
       }else {
         showDialog<String>(
@@ -141,7 +150,7 @@ class _LoginState extends State<Login> {
                                   TextButton(
                                     style: TextButton.styleFrom(
                                         backgroundColor: const Color(0xff01BC8F),
-                                        foregroundColor: const Color(0xff242424),
+
                                         padding: const EdgeInsets.fromLTRB(27, 10, 27 , 10),
                                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))
                                     ),

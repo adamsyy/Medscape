@@ -1,8 +1,13 @@
+import 'dart:convert';
 import 'dart:ui';
+import 'package:get/get.dart';
+import 'package:healthcard/Controller.dart';
+import 'package:healthcard/Home.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
-
+int check=0;
 class Add_prescription extends StatefulWidget {
+
 
   @override
   _Add_prescriptionState createState() => _Add_prescriptionState();
@@ -10,6 +15,17 @@ class Add_prescription extends StatefulWidget {
 
 class _Add_prescriptionState extends State<Add_prescription> {
   @override
+
+
+  void initState() {
+    // TODO: implement initState
+
+   dataFuture = fetchToknens();
+    super.initState();
+  }
+
+  late var data;
+  late var dataFuture;
   Widget build(BuildContext context) {
     return Scaffold(
 
@@ -121,7 +137,7 @@ class _Add_prescriptionState extends State<Add_prescription> {
                                       Padding(
                                         padding: EdgeInsets.fromLTRB(20, 4, 19, 0),
                                         child: TextField(
-                                          decoration: InputDecoration(hintText: 'Medcine name',
+                                          decoration: InputDecoration(hintText: 'Medicine name',
                                             hintStyle: TextStyle(
                                               fontSize: 16.0,
                                               fontWeight: FontWeight.w300,
@@ -259,13 +275,18 @@ class _Add_prescriptionState extends State<Add_prescription> {
   }
 
   dynamic fetchToknens() async {
+
+    Controller c = Get.put(Controller());
+    var laa=["1","1","11","ww"];
     print("oioioi");
+
     Map newUpdate = {
-      "username": widget.namefromScan,
-      "doctor_username": "salmanxy"
+      "patient_username": "adamsy",
+      "doctor_username": "salmanxy",
+      "prescriptions":laa
     };
-    final url = Uri.parse(c.url.toString() + "auth/user");
-    print(url.toString() + "url");
+    final url = Uri.parse(c.url.toString() + "prescriptions/doctor");
+    print(url.toString() + "  url");
 
     final response = await http.post(url,
         headers: {
@@ -276,7 +297,7 @@ class _Add_prescriptionState extends State<Add_prescription> {
     // print(response.body);
     if (response.statusCode == 200) {
       setState(() {
-        data = json.decode(response.body)["user"];
+        data = json.decode(response.body)["patient"];
         print("///");
         print(data);
       });
@@ -287,4 +308,5 @@ class _Add_prescriptionState extends State<Add_prescription> {
       return data;
     }
   }
+
 }

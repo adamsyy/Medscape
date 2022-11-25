@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
 
           primarySwatch: Colors.blue,
         ),
-          home:Login(),
+          home:Add_prescription(),
     );
   }
 }
