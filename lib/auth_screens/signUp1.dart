@@ -46,8 +46,7 @@ class _signUp1State extends State<signUp1> {
 
       backgroundColor: Color(0xffB2CCFF),
 
-      body: SafeArea(
-      child: Stack(
+      body: Stack(
         children:[
 
           // Align(
@@ -327,10 +326,7 @@ class _signUp1State extends State<signUp1> {
             ),
           ),
         ]
-      ),
-
-
-    )
+      )
       /*Image.asset(
       "assets/backgrnd.png",
      // alignment: Alignment.bottomRight,

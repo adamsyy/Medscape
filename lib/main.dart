@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:healthcard/Home.dart';
+import 'package:healthcard/auth_screens/login.dart';
 import 'package:healthcard/blogs/Blogs3.dart';
 import 'package:healthcard/delivery/Blood.dart';
 import 'package:healthcard/delivery/Medicine.dart';
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
 
           primarySwatch: Colors.blue,
         ),
-          home:Home()
+          home:Login(),
     );
   }
 }
