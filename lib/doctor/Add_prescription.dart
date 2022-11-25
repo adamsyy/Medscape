@@ -20,12 +20,16 @@ class _Add_prescriptionState extends State<Add_prescription> {
   void initState() {
     // TODO: implement initState
 
-   dataFuture = fetchToknens();
+
     super.initState();
   }
 
   late var data;
   late var dataFuture;
+  late var med_name_tosubmit;
+  late var dose_to_submit;
+  late var date_to_submit;
+
   Widget build(BuildContext context) {
     return Scaffold(
 
@@ -137,6 +141,9 @@ class _Add_prescriptionState extends State<Add_prescription> {
                                       Padding(
                                         padding: EdgeInsets.fromLTRB(20, 4, 19, 0),
                                         child: TextField(
+                                          onChanged: (String med_name){
+med_name_tosubmit=med_name;
+                                          },
                                           decoration: InputDecoration(hintText: 'Medicine name',
                                             hintStyle: TextStyle(
                                               fontSize: 16.0,
@@ -165,7 +172,9 @@ class _Add_prescriptionState extends State<Add_prescription> {
                                       SizedBox(height: 10,),
                                       Padding(
                                         padding: EdgeInsets.fromLTRB(20, 4, 19, 0),
-                                        child: TextField(
+                                        child: TextField(       onChanged: (String till_date){
+date_to_submit=till_date;
+                                        },
                                           decoration: InputDecoration(hintText: 'Till when',
                                             hintStyle: TextStyle(
                                               fontSize: 16.0,
@@ -197,6 +206,9 @@ class _Add_prescriptionState extends State<Add_prescription> {
                                       Padding(
                                         padding: EdgeInsets.fromLTRB(20, 4, 19, 0),
                                         child: TextField(
+                                          onChanged: (String dose){
+dose_to_submit=dose;
+                                          },
                                           decoration: InputDecoration(hintText: 'Dose in mg',
                                             hintStyle: TextStyle(
                                               fontSize: 16.0,
@@ -226,7 +238,11 @@ class _Add_prescriptionState extends State<Add_prescription> {
                                       Align(
                                         alignment: FractionalOffset.bottomRight,
                                         child: MaterialButton(
-                                          onPressed: () => {},
+                                          onPressed: () => {
+                                          dataFuture = fetchToknens(),
+
+
+                                          },
                                           child: Container(
                                             decoration: BoxDecoration(
                                               borderRadius: BorderRadius.circular(12),
@@ -277,11 +293,11 @@ class _Add_prescriptionState extends State<Add_prescription> {
   dynamic fetchToknens() async {
 
     Controller c = Get.put(Controller());
-    var laa=["1","1","11","ww"];
+    var laa=["salmanxy",med_name_tosubmit,date_to_submit,dose_to_submit];
     print("oioioi");
 
     Map newUpdate = {
-      "patient_username": "adamsy",
+      "patient_username": c.username.value,
       "doctor_username": "salmanxy",
       "prescriptions":laa
     };
