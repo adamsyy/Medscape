@@ -6,6 +6,7 @@ import 'package:healthcard/Controller.dart';
 import 'package:healthcard/blogs/Blogs2.dart';
 import 'package:healthcard/delivery/Blood.dart';
 import 'package:healthcard/delivery/Medicine.dart';
+import 'package:healthcard/doctor/Scan.dart';
 import 'package:healthcard/patient/Profile.dart';
 import 'package:healthcard/patient/Reminder.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -49,9 +50,16 @@ class _HomeState extends State<Home>
                     ),
                     Row(
                       children: [
-                        Image.asset(
-                          "pics/logo.png",
-                          width: 41,
+                        GestureDetector(onTap: (){
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) =>  QRViewExample()),
+                          );
+                },
+                          child: Image.asset(
+                            "pics/logo.png",
+                            width: 41,
+                          ),
                         ),
                         SizedBox(
                           width: 5,
@@ -387,6 +395,7 @@ class _HomeState extends State<Home>
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         GestureDetector(onTap: (){
+                          check=0;
                           Navigator.push(
                             context,
                             MaterialPageRoute(builder: (context) =>  Reminder()),
@@ -401,9 +410,10 @@ class _HomeState extends State<Home>
                         Icon(Icons.list_alt_rounded,
                             color: Colors.white, size: 38),
                         GestureDetector(onTap: (){
+                          check=0;
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => const Profile()),
+                            MaterialPageRoute(builder: (context) =>  Profile(namefromprofile: "adamsy")),
                           );
     },
                           child: Icon(Icons.person_outline_rounded,

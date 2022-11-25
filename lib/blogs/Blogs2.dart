@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:glassmorphism/glassmorphism.dart';
 import 'package:healthcard/blogs/Blogs3.dart';
 
+
 class Blogs2 extends StatefulWidget {
   const Blogs2({Key? key}) : super(key: key);
 
@@ -11,6 +12,7 @@ class Blogs2 extends StatefulWidget {
 
 class _Blogs2State extends State<Blogs2> {
   @override
+
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Color(0xff9AC9C2),

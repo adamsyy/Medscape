@@ -500,6 +500,7 @@ class _ReminderState extends State<Reminder> {
                           size: 38,
                         ),
                         GestureDetector(onTap: (){
+                          check=0;
                           Navigator.push(
                             context,
                             MaterialPageRoute(builder: (context) =>  Home()),
@@ -509,9 +510,10 @@ class _ReminderState extends State<Reminder> {
                               color: Colors.white, size: 38),
                         ),
                         GestureDetector(onTap: (){
+                          check=0;
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) =>  Profile()),
+                            MaterialPageRoute(builder: (context) =>  Profile(namefromprofile: "adamsy",)),
                           );
                         },
                           child: Icon(Icons.person_outline_rounded,
