@@ -5,6 +5,10 @@ class Controller extends GetxController{
   var lat = 10.372250.obs;
   var long = 76.305794.obs;
   var username="adamsy".obs;
+  var height=0.obs;
+  var weight=0.obs;
+  var waist=0.obs;
+  var sex="".obs;
   var url="https://healthcard1.herokuapp.com/".obs;
   //boolean isdoctor = false.obs;
   var isdoctor = false.obs;

@@ -165,7 +165,7 @@ class _ProfileState extends State<Profile> {
                                   height: 5,
                                 ),
                                 Text(
-                                  "Male",
+                                   data["sex"],
                                   style: TextStyle(
                                       fontSize: 15,
                                       fontWeight: FontWeight.w500),
@@ -267,7 +267,7 @@ class _ProfileState extends State<Profile> {
                                   height: 5,
                                 ),
                                 Text(
-                                  "O+",
+                                  "${data["blood_group"]}",
                                   style: TextStyle(
                                       fontSize: 15,
                                       fontWeight: FontWeight.w500),
@@ -499,7 +499,7 @@ class _ProfileState extends State<Profile> {
                                               width: 2,
                                             ),
                                             Text(
-                                              data["prescriptions"]
+                                              "Doctor:"+data["prescriptions"]
                                               [index][0],
                                               style: TextStyle(),
                                             ),

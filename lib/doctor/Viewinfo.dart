@@ -366,7 +366,7 @@ class _ViewinfoState extends State<Viewinfo> {
                                               child: Row(
                                                 children: [
                                                   Text(
-                                                    data["medicines"][index][0],
+                                                  "Doctor:"+data["medicines"][index][0],
                                                     style: TextStyle(),
                                                   ),
                                                   SizedBox(

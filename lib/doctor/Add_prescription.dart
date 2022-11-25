@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:get/get.dart';
 import 'package:healthcard/Controller.dart';
 import 'package:healthcard/Home.dart';
+import 'package:healthcard/doctor/Viewinfo.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 int check=0;
@@ -321,6 +322,10 @@ dose_to_submit=dose;
       setState(() {
         check = 1;
       });
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) =>  Viewinfo(namefromScan: controller.username.value)),
+      );
       return data;
     }
   }

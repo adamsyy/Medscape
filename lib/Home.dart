@@ -585,13 +585,13 @@ class _HomeState extends State<Home> {
                                                   height: 33,
                                                 ),
                                                 Text(
-                                                  "fake",
+                                                  "Medical",
                                                   style: TextStyle(
                                                       fontWeight: FontWeight.w500,
                                                       fontSize: 10),
                                                 ),
                                                 Text(
-                                                  "ahne",
+                                                  "History",
                                                   style: TextStyle(
                                                       fontWeight: FontWeight.w500,
                                                       fontSize: 10),
