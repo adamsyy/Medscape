@@ -440,7 +440,7 @@ class _HomeState extends State<Home> {
                                                   height: 10,
                                                 ),
                                                 Image.asset(
-                                                  "pics/home2.png",
+                                                  "pics/blog.png",
                                                   width: 36,
                                                   height: 33,
                                                 ),
@@ -531,7 +531,7 @@ class _HomeState extends State<Home> {
                                                   height: 10,
                                                 ),
                                                 Image.asset(
-                                                  "pics/home3.png",
+                                                  "pics/health_Score.png",
                                                   width: 36,
                                                   height: 33,
                                                 ),
