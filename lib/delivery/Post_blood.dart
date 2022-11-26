@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:get/get.dart';
 import 'package:healthcard/Controller.dart';
 import 'package:healthcard/Home.dart';
+import 'package:healthcard/delivery/Blood.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 
@@ -328,6 +329,11 @@ class _Post_bloodState extends State<Post_blood> {
       setState(() {
         check = 1;
       });
+
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) =>  Blood()),
+      );
       return data;
     }
   }

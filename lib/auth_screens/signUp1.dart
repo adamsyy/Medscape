@@ -19,7 +19,7 @@ class _signUp1State extends State<signUp1> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Scaffold(resizeToAvoidBottomInset:false,
 
         appBar: AppBar(
           title: Text(
@@ -101,7 +101,7 @@ class _signUp1State extends State<signUp1> {
                 child: BackdropFilter(
                   filter: ImageFilter.blur(sigmaX:15, sigmaY:15),
                   child: Container(
-                  height: 511,
+                  height: 530,
                   width: 332,
                   color: Colors.white.withOpacity(0.2),
                   child: Column(

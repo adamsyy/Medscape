@@ -9,6 +9,8 @@ import 'package:healthcard/delivery/Medicine.dart';
 import 'package:healthcard/doctor/Scan.dart';
 import 'package:healthcard/patient/Profile.dart';
 import 'package:healthcard/patient/Reminder.dart';
+import 'package:healthcard/scores/healthScore.dart';
+import 'package:healthcard/scores/scoreCard.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:geolocator/geolocator.dart';
 
@@ -112,7 +114,7 @@ class _HomeState extends State<Home> {
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: Text(
-                                      "Health This",
+                                      "check your",
                                       style: TextStyle(
                                           fontWeight: FontWeight.w500,
                                           fontSize: 20),
@@ -121,7 +123,7 @@ class _HomeState extends State<Home> {
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: Text(
-                                      "Week!",
+                                      "health score!",
                                       style: TextStyle(
                                           fontWeight: FontWeight.w500,
                                           fontSize: 20),
@@ -135,7 +137,7 @@ class _HomeState extends State<Home> {
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => Blogs2()),
+                                            builder: (context) => scoreCard()),
                                       );
                                     },
                                     child: Padding(
@@ -463,11 +465,11 @@ class _HomeState extends State<Home> {
                                   ),
                                   GestureDetector(
                                     onTap: () async {
-                                      // Navigator.push(
-                                      //   context,
-                                      //   MaterialPageRoute(
-                                      //       builder: (context) => Medicine()),
-                                      // );
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>scoreCard()),
+                                      );
                                     },
                                     child: Column(
                                       children: [
@@ -512,7 +514,11 @@ class _HomeState extends State<Home> {
                                   SizedBox(width: 10,),
                                   GestureDetector(
                                     onTap: () async {
-
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => healthScore()),
+                                      );
                                     },
                                     child: Column(
                                       children: [

@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:get/get.dart';
 import 'package:healthcard/Controller.dart';
 import 'package:healthcard/Home.dart';
+import 'package:healthcard/delivery/Medicine.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 int check=0;
@@ -360,6 +361,11 @@ class _Post_medicineState extends State<Post_medicine> {
       setState(() {
         check = 1;
       });
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) =>  Medicine()),
+      );
+
       return data;
     }
   }

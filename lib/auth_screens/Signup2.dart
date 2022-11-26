@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:get/get.dart';
+import 'package:healthcard/Controller.dart';
 import 'package:healthcard/Home.dart';
 import 'package:http/http.dart';
 import 'package:glassmorphism/glassmorphism.dart';
@@ -25,7 +27,13 @@ class _Signup2State extends State<Signup2> {
 
   void signup(String blood_group , sex) async {
     try{
-      Response response = await post(
+      Controller c = Get.put(Controller());
+      c.height.value=heightController.text as int;
+      c.weight.value=weightController.text as int;
+      c.waist.value=waistController.text as int;
+      c.sex=sex;
+
+      final response = await post(
         Uri.parse('https://healthcard1.herokuapp.com/auth/signup'),
         body: {
           'username' : widget.uname,
@@ -953,7 +961,7 @@ class _Signup2State extends State<Signup2> {
                                     color: Color.fromRGBO(122, 135, 251, 1),
                                   ),
                                   child: Center(
-                                    child: (!flag ? const Text("sign up", style: TextStyle(fontSize: 20,fontWeight: FontWeight.w400, color: Color(0xff000000)),) : 
+                                    child: (!flag ? const Text("sign up", style: TextStyle(fontSize: 20,fontWeight: FontWeight.w400, color: Color(0xff000000)),) :
                                     const SpinKitFadingCircle(
                                       color: Colors.black,
                                       size: 20,
