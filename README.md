@@ -1,16 +1,19 @@
-# healthcard
+# Medscape
 
-A new Flutter project.
+Medical app
+</br>
+All health solutions under one hood
+<br/>
 
-## Getting Started
+## Stacks used
 
-This project is a starting point for a Flutter application.
+![Flutter](https://img.shields.io/badge/Flutter-%2302569B.svg?style=for-the-badge&logo=Flutter&logoColor=white)
+![Nodejs](https://img.shields.io/badge/Nodejs-FF8800?style=for-the-badge&logo=Nodejs&logoColor=white)
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## App screens
+![11](https://user-images.githubusercontent.com/75473780/163435771-44e55341-40a7-4152-836e-92325911afc0.jpg)
+![12](https://user-images.githubusercontent.com/75473780/163435779-92c8a0b3-c18a-4e38-9159-6dde593aec05.jpg)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Project by @adamsyy</br>
+Designed by @JezwinThomas
