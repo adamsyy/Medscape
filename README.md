@@ -13,4 +13,10 @@ All health solutions under one hood
 
 ## App screens
 
-
+![login](https://user-images.githubusercontent.com/75473780/213473978-bb8fdd04-6357-4867-b241-4a577a9153fe.png)
+![Blogs](https://user-images.githubusercontent.com/75473780/213474407-f0f86d58-ca3d-4662-a979-475f79c16c1f.png)
+![profile](https://user-images.githubusercontent.com/75473780/213474420-8d134afc-887b-4c32-833e-5979b6d84734.png)
+![lists](https://user-images.githubusercontent.com/75473780/213474427-748c96f8-7e92-428f-a056-003d09442250.png)
+![signup 1](https://user-images.githubusercontent.com/75473780/213474440-299d92e8-52d2-4bbd-bbb9-6bdde3e151e0.png)
+![signup 2](https://user-images.githubusercontent.com/75473780/213474445-bd5ef80d-2a04-4860-8cf8-32299315a5d5.png)
+![Score card](https://user-images.githubusercontent.com/75473780/213474449-6dffe43a-6c4e-48b7-a2ae-7534a936a0b5.png)
