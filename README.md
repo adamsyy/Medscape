@@ -1,7 +1,6 @@
 # Medscape
 
-* First prize winning project at Tek-O-thon 2022
-</br>
+First prize winning project at Tek-O-thon 2022
 Driving Informed Medical Decisions.
 <br/>
 </br>
