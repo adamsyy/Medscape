@@ -19,7 +19,7 @@ The All health solutions under one hood.
 
 ## Features
 </br>
-Unique ID Card
+*Unique ID Card
 <br/>
 </br>
 Health and Coverage Score
