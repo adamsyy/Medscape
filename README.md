@@ -20,7 +20,7 @@ The All health solutions under one hood.
 ## Features
 
 * Unique ID Card
-  Get access to the best health insurances for your case, available online through a score calculation which is influenced by YOUR data.
+  * Get access to the best health insurances for your case, available online through a score calculation which is influenced by YOUR data.
 * Health and Coverage Score
 * Medicine and Blood Request
 * Hospital and Pharmacy locator
