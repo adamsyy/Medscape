@@ -18,7 +18,27 @@ The All health solutions under one hood.
 ![Screenshot 2023-08-31 112905](https://github.com/adamsyy/Medscape/assets/75473780/0e1d6b26-438d-4f8d-a939-b49ac37d32ed)
 
 ## Features
-
+</br>
+Unique ID Card
+<br/>
+</br>
+Health and Coverage Score
+<br/>
+</br>
+Medicine and Blood Request
+<br/>
+</br>
+Hospital and Pharmacy locator
+<br/>
+</br>
+Suggested Blogs and Nutrition based on Health Score
+<br/>
+</br>
+Medical History Documentation
+<br/>
+</br>
+Hospital Booking Management
+<br/>
 ## App screens
 
 ![login](https://user-images.githubusercontent.com/75473780/213473978-bb8fdd04-6357-4867-b241-4a577a9153fe.png)
