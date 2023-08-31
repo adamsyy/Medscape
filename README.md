@@ -67,7 +67,9 @@
   * Tie-up with schemes like Ministry of AYUSH, Pradhan Mantri Swasthya Suraksha Yojana (PMSSY), Ayushman Bharat Pradhan Mantri Jan Arogya Yojana (AB PM-JAY).
 
 ## Project Presentation
+<br>
 [PPT](https://www.canva.com/design/DAFrzslexng/b6J41zO-Gr_z3QJHc4goQw/edit)
+</br>
 <br>
 [Devfolio submission](https://devfolio.co/projects/medscape-50db)
 </br>
