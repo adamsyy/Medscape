@@ -1,6 +1,6 @@
 # Medscape
 
-Medical app
+* First prize winning project at Tek-O-thon 2022
 </br>
 Driving Informed Medical Decisions.
 <br/>
