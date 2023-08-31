@@ -20,15 +20,18 @@ The All health solutions under one hood.
 ## Features
 
 * Unique ID Card
-  * Get access to the best health insurances for your case, available online through a score calculation which is influenced by YOUR data.
 * Health and Coverage Score
+  * Get access to the best health insurances for your case, available online through a score calculation which is influenced by YOUR data.
+  * Get access to the best diet plans and blogs curated to you depending on your health score.
 * Medicine and Blood Request
 * Hospital and Pharmacy locator
+  * Automate and schedule hospital visits and doctor appointments.
 * Suggested Blogs and Nutrition based on Health Score
 * Medical History Documentation
 * Hospital Booking Management
-
-
+* Centralized Data Storage
+  * It's time to ditch the old processes. One database for all.
+  * 
 ## App screens
 
 ![login](https://user-images.githubusercontent.com/75473780/213473978-bb8fdd04-6357-4867-b241-4a577a9153fe.png)
