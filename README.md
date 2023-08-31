@@ -73,9 +73,3 @@
 <br>
 [Devfolio submission](https://devfolio.co/projects/medscape-50db)
 </br>
-
-
-
-
-
-
