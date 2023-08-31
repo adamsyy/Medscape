@@ -24,14 +24,18 @@ The All health solutions under one hood.
   * Get access to the best health insurances for your case, available online through a score calculation which is influenced by YOUR data.
   * Get access to the best diet plans and blogs curated to you depending on your health score.
 * Medicine and Blood Request
+  * Ask an entire network for the availability of transport of medicines and getting blood.
 * Hospital and Pharmacy locator
   * Automate and schedule hospital visits and doctor appointments.
+  * Locate your nearest hospitals and pharmacy.
 * Suggested Blogs and Nutrition based on Health Score
 * Medical History Documentation
 * Hospital Booking Management
 * Centralized Data Storage
   * It's time to ditch the old processes. One database for all.
-  * 
+* Data Security
+  * Health Data Fiduciaries (trustees) that shall facilitate consent-driven interaction between entities that generate the health data and entities that want to consume the PHR for delivering better services to the individual.
+  * In case of Accidents or emergencies, the HDF’s will be sent a SOS message along with the details of the doctors scanning the QR code. 
 ## App screens
 
 ![login](https://user-images.githubusercontent.com/75473780/213473978-bb8fdd04-6357-4867-b241-4a577a9153fe.png)
@@ -42,3 +46,28 @@ The All health solutions under one hood.
 ![signup 2](https://user-images.githubusercontent.com/75473780/213474445-bd5ef80d-2a04-4860-8cf8-32299315a5d5.png)
 ![Score card](https://user-images.githubusercontent.com/75473780/213474449-6dffe43a-6c4e-48b7-a2ae-7534a936a0b5.png)
 ![Health card](https://user-images.githubusercontent.com/75473780/213474562-8330fcc2-40c9-452f-8a17-14f3e2c419ff.png)
+
+
+## Revenue Model 
+
+* Government collaboration using legal partners such as HPR, and getting a small fee from them, saving them money by not normalising tenders.
+
+* A 100 rupee convenience fee for claiming insurance.
+ 
+* A 40 rupee convenience fee for booking and scheduling         
+     doctor appointments.
+
+## Authentication
+
+* Verify details of the health care professionals with the database from HPR (Healthcare Professional Registry), and only onboard them after a verification process
+
+* Hospital services and doctors booking can be verified and validated through the dataset of the Health Facility Registry.
+* Government Tie-Up
+  * Only building on top of the current system.
+  * Building an ecosystem to bring the entirety of the Government Health initiatives to one place.
+  * Tie-up with schemes like Ministry of AYUSH, Pradhan Mantri Swasthya Suraksha Yojana (PMSSY), Ayushman Bharat Pradhan Mantri Jan Arogya Yojana (AB PM-JAY).
+
+
+
+
+
