@@ -20,25 +20,13 @@ The All health solutions under one hood.
 ## Features
 
 * Unique ID Card
+* Health and Coverage Score
+* Medicine and Blood Request
+* Hospital and Pharmacy locator
+* Suggested Blogs and Nutrition based on Health Score
+* Medical History Documentation
+* Hospital Booking Management
 
-</br>
-Health and Coverage Score
-<br/>
-</br>
-Medicine and Blood Request
-<br/>
-</br>
-Hospital and Pharmacy locator
-<br/>
-</br>
-Suggested Blogs and Nutrition based on Health Score
-<br/>
-</br>
-Medical History Documentation
-<br/>
-</br>
-Hospital Booking Management
-<br/>
 
 ## App screens
 
