@@ -11,6 +11,8 @@ All health solutions under one hood
 ![Flutter](https://img.shields.io/badge/Flutter-%2302569B.svg?style=for-the-badge&logo=Flutter&logoColor=white)
 ![Nodejs](https://img.shields.io/badge/Nodejs-FF8800?style=for-the-badge&logo=Nodejs&logoColor=white)
 
+## Backend Architecture
+![Screenshot 2023-08-31 112905](https://github.com/adamsyy/Medscape/assets/75473780/0e1d6b26-438d-4f8d-a939-b49ac37d32ed)
 
 ## App screens
 
