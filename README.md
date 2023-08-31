@@ -75,6 +75,29 @@
 </br>
 
 
+## User Flow Diagram: User Authentication
+
+```mermaid
+graph TD
+    A[Start] --> B[User Requests Login/Register]
+    B --> C[Client Sends Request]
+    C --> D[Server Validates Request]
+    D --> E[Display Login/Register Page]
+    E --> F[User Enters Credentials]
+    F --> G[Client Sends Credentials]
+    G --> H[Server Validates Credentials]
+    H --> I[Server Generates Token]
+    I --> J[Server Sends Token]
+    J --> K[Client Receives Token]
+    K --> L[Store Token Locally]
+    L --> M[Authenticated Operations]
+    M --> N[User Requests Logout]
+    N --> O[Client Sends Logout Request]
+    O --> P[Server Invalidates Token]
+    P --> Q[Client Clears Local Token]
+    Q --> R[End]
+
+
 
 
 
