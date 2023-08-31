@@ -18,9 +18,9 @@ The All health solutions under one hood.
 ![Screenshot 2023-08-31 112905](https://github.com/adamsyy/Medscape/assets/75473780/0e1d6b26-438d-4f8d-a939-b49ac37d32ed)
 
 ## Features
-</br>
+
 * Unique ID Card
-<br/>
+
 </br>
 Health and Coverage Score
 <br/>
