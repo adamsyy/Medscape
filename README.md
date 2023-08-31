@@ -4,7 +4,7 @@
 
 * Driving Informed Medical Decisions.
 
-* The All health solutions under one hood.
+* All health solutions under one hood.
 
 ## Backend Code
 [Link](https://github.com/adamsyy/Medscape/tree/main/medscape-backend)
