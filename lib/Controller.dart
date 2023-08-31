@@ -9,7 +9,7 @@ class Controller extends GetxController{
   var weight=0.obs;
   var waist=0.obs;
   var sex="".obs;
-  var url="https://healthcard1.herokuapp.com/".obs;
+  var url="https://medscape-backend-kqaedxbz4-weberstills.vercel.app/".obs;
   //boolean isdoctor = false.obs;
   var isdoctor = false.obs;
   increment() => count++;

@@ -34,7 +34,7 @@ class _Signup2State extends State<Signup2> {
       c.sex=sex;
 
       final response = await post(
-        Uri.parse('https://healthcard1.herokuapp.com/auth/signup'),
+        Uri.parse('https://medscape-backend-kqaedxbz4-weberstills.vercel.app/auth/signup'),
         body: {
           'username' : widget.uname,
           'email' : widget.email,

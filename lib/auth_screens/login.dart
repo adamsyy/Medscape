@@ -25,7 +25,7 @@ class _LoginState extends State<Login> {
     try{
       c.username.value=email;
       final response = await post(
-        Uri.parse('https://healthcard1.herokuapp.com/auth/login'),
+        Uri.parse('https://medscape-backend-kqaedxbz4-weberstills.vercel.app/auth/login'),
         body: {
           'username' : email,
           'password' : password
@@ -35,6 +35,7 @@ class _LoginState extends State<Login> {
       if(response.statusCode == 200){
         Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Home()));
       }else {
+        print(response.body);
         showDialog<String>(
           context: context,
           builder: (BuildContext context) => AlertDialog(
