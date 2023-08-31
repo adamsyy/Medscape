@@ -75,9 +75,6 @@
 </br>
 
 
-## User Flow Diagram: User Authentication
-
-```mermaid
 
 
 
